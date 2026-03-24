@@ -16,4 +16,4 @@ and transaction records
 ● Includes SMS/WhatsApp notifications for low-connectivity users 
 in Tier 3 areas
 
-LINK - https://chauhansrushti.github.io/CLEW/
+
