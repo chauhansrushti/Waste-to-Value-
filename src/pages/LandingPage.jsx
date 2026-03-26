@@ -12,14 +12,14 @@ const LandingPage = () => {
             {/* Hero Section */}
             <section style={{
                 position: 'relative',
-                height: '90vh',
-                minHeight: '700px',
+                minHeight: 'clamp(600px, 90vh, 800px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 textAlign: 'center',
-                padding: '0 2rem',
-                zIndex: 1
+                padding: 'clamp(2rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem)',
+                zIndex: 1,
+                marginTop: 'clamp(3.5rem, 8vw, 4rem)'
             }}>
                 {/* Remove local Video Background to show global slideshow */}
 
@@ -44,35 +44,35 @@ const LandingPage = () => {
                         transition={{ delay: 0.2 }}
                         style={{
                             display: 'inline-block',
-                            padding: '0.6rem 2rem',
+                            padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 4vw, 2rem)',
                             borderRadius: '99px',
                             background: 'rgba(0, 255, 157, 0.1)',
                             border: '1px solid rgba(0, 255, 157, 0.3)',
                             color: 'var(--color-brand-primary)',
-                            fontSize: '0.9rem',
+                            fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
                             fontWeight: '700',
-                            marginBottom: '2.5rem',
+                            marginBottom: 'clamp(1.5rem, 5vw, 2.5rem)',
                             textTransform: 'uppercase',
-                            letterSpacing: '3px',
+                            letterSpacing: 'clamp(1px, 2vw, 3px)',
                             backdropFilter: 'blur(5px)'
                         }}
                     >
                         Intelligence in Recycling
                     </motion.div>
                     <h1 style={{
-                        fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                        fontSize: 'clamp(2.5rem, 10vw, 6rem)',
                         fontWeight: '950',
-                        marginBottom: '2rem',
+                        marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
                         lineHeight: '0.95',
-                        letterSpacing: '-3px'
+                        letterSpacing: 'clamp(-1px, -0.5vw, -3px)'
                     }}>
                         Waste <br /> To <span style={{ color: 'var(--color-brand-primary)' }}>Impact</span>
                     </h1>
-                    <p style={{ fontSize: '1.4rem', marginBottom: '3.5rem', maxWidth: '800px', margin: '0 auto 3.5rem', color: 'var(--color-text-secondary)', lineHeight: '1.4', fontWeight: '400' }}>
+                    <p style={{ fontSize: 'clamp(1rem, 3vw, 1.4rem)', marginBottom: 'clamp(2rem, 5vw, 3.5rem)', maxWidth: '800px', margin: '0 auto clamp(2rem, 5vw, 3.5rem)', color: 'var(--color-text-secondary)', lineHeight: '1.4', fontWeight: '400' }}>
                         The world's most advanced circular economy engine. We don't just manage waste; we engineer resources for a smarter, cleaner future.
                     </p>
-                    <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Link to="/register" className="btn btn-primary" style={{ padding: '1.5rem 4rem', fontSize: '1.2rem', borderRadius: '15px', fontWeight: '800' }}>
+                    <div style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 1.5rem)', justifyContent: 'center', flexWrap: 'wrap', padding: '0 clamp(1rem, 4vw, 2rem)' }}>
+                        <Link to="/register" className="btn btn-primary" style={{ padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 6vw, 4rem)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', borderRadius: '15px', fontWeight: '800' }}>
                             Get Started Now <ArrowRight size={24} />
                         </Link>
                     </div>
@@ -89,11 +89,11 @@ const LandingPage = () => {
             </section>
 
             {/* Introduction Section */}
-            <section style={{ padding: '10rem 2rem', background: 'var(--color-bg-primary)', position: 'relative', zIndex: 1 }}>
+            <section style={{ padding: 'clamp(4rem, 10vw, 10rem) clamp(1rem, 4vw, 2rem)', background: 'var(--color-bg-primary)', position: 'relative', zIndex: 1 }}>
                 <div className="container" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                    gap: '4rem',
+                    gridTemplateColumns: '1fr',
+                    gap: 'clamp(2rem, 5vw, 4rem)',
                     alignItems: 'center'
                 }}>
                     <motion.div
@@ -101,20 +101,20 @@ const LandingPage = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 style={{ fontSize: '3.5rem', fontWeight: '800', marginBottom: '2rem', lineHeight: '1.1' }}>
+                        <h2 style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)', fontWeight: '800', marginBottom: 'clamp(1rem, 3vw, 2rem)', lineHeight: '1.1' }}>
                             Advanced <br /> <span style={{ color: 'var(--color-brand-primary)' }}>Compliance</span> & Tracking
                         </h2>
-                        <p style={{ fontSize: '1.15rem', color: 'var(--color-text-secondary)', marginBottom: '2.5rem', lineHeight: '1.7' }}>
+                        <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', color: 'var(--color-text-secondary)', marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)', lineHeight: '1.7' }}>
                             EcoConnect uses state-of-the-art logistics and material verification to ensure that every gram of waste reaches its optimal destiny. From residential collection to industrial processing, we provide end-to-end transparency.
                         </p>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(1.5rem, 3vw, 2rem)' }}>
                             <div>
-                                <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem' }}>Real-time Monitoring</h4>
-                                <p style={{ fontSize: '0.9rem' }}>Track your materials from pickup to processing with live updates.</p>
+                                <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)' }}>Real-time Monitoring</h4>
+                                <p style={{ fontSize: 'clamp(0.85rem, 2vw, 0.9rem)' }}>Track your materials from pickup to processing with live updates.</p>
                             </div>
                             <div>
-                                <h4 style={{ color: 'var(--color-brand-primary)', marginBottom: '0.5rem' }}>Full Compliance</h4>
-                                <p style={{ fontSize: '0.9rem' }}>Digital manifests and environmental certificates provided instantly.</p>
+                                <h4 style={{ color: 'var(--color-brand-primary)', marginBottom: '0.5rem', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)' }}>Full Compliance</h4>
+                                <p style={{ fontSize: 'clamp(0.85rem, 2vw, 0.9rem)' }}>Digital manifests and environmental certificates provided instantly.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -122,8 +122,9 @@ const LandingPage = () => {
                         position: 'relative',
                         borderRadius: '32px',
                         overflow: 'hidden',
-                        height: '500px',
-                        minWidth: '400px',
+                        height: 'clamp(300px, 60vw, 500px)',
+                        minWidth: 'auto',
+                        width: '100%',
                         border: '2px solid rgba(0, 255, 157, 0.3)',
                         boxShadow: '0 20px 60px rgba(0, 255, 157, 0.2)',
                         backgroundColor: '#163B32'
@@ -151,13 +152,13 @@ const LandingPage = () => {
 
 
             {/* Premium Categories Grid */}
-            <section style={{ padding: '10rem 2rem', background: 'var(--color-bg-secondary)', position: 'relative', zIndex: 1 }}>
+            <section style={{ padding: 'clamp(4rem, 10vw, 10rem) clamp(1rem, 4vw, 2rem)', background: 'var(--color-bg-secondary)', position: 'relative', zIndex: 1 }}>
                 <div className="container">
-                    <div style={{ marginBottom: '6rem', textAlign: 'center' }}>
-                        <h2 style={{ fontSize: '4rem', fontWeight: '900', marginBottom: '1.5rem', letterSpacing: '-2px' }}>Operational Hubs</h2>
-                        <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto' }}>Select your entry point into the circular economy.</p>
+                    <div style={{ marginBottom: 'clamp(3rem, 8vw, 6rem)', textAlign: 'center' }}>
+                        <h2 style={{ fontSize: 'clamp(2rem, 7vw, 4rem)', fontWeight: '900', marginBottom: 'clamp(1rem, 3vw, 1.5rem)', letterSpacing: '-2px' }}>Operational Hubs</h2>
+                        <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto' }}>Select your entry point into the circular economy.</p>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1.5rem, 3vw, 3rem)' }}>
                         <PremiumWasteCard
                             title="Sustainable Sellers"
                             icon={<Trash2 size={40} />}
@@ -202,38 +203,39 @@ const PremiumWasteCard = ({ title, icon, image, description, role }) => {
                 flexDirection: 'column',
                 height: '100%',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                padding: '3rem'
+                padding: 'clamp(1.5rem, 4vw, 3rem)'
             }}
         >
             <div className="icon-pulse" style={{
                 background: 'var(--color-brand-primary)',
-                padding: '1.5rem',
+                padding: 'clamp(1rem, 2vw, 1.5rem)',
                 borderRadius: '20px',
                 color: '#041E15',
                 boxShadow: '0 10px 40px rgba(0, 255, 157, 0.5)',
                 transition: 'all 0.3s',
                 width: 'fit-content',
-                marginBottom: '2rem'
+                marginBottom: 'clamp(1rem, 3vw, 2rem)',
+                fontSize: 'clamp(1.5rem, 3vw, 2.5rem)'
             }}>
                 {icon}
             </div>
 
             <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                <div style={{ marginBottom: '1.25rem' }}>
-                    <span style={{ fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '3px', color: 'var(--color-accent)' }}>{role}</span>
+                <div style={{ marginBottom: '0.75rem' }}>
+                    <span style={{ fontSize: 'clamp(0.7rem, 1.5vw, 0.85rem)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--color-accent)' }}>{role}</span>
                 </div>
-                <h3 style={{ fontSize: '2rem', marginBottom: '1.25rem', fontWeight: '800', letterSpacing: '-1px' }}>{title}</h3>
-                <p style={{ marginBottom: '3rem', color: 'var(--color-text-secondary)', lineHeight: '1.6', fontSize: '1.1rem' }}>{description}</p>
+                <h3 style={{ fontSize: 'clamp(1.3rem, 4vw, 2rem)', marginBottom: 'clamp(0.75rem, 2vw, 1.25rem)', fontWeight: '800', letterSpacing: '-1px' }}>{title}</h3>
+                <p style={{ marginBottom: 'clamp(1.5rem, 3vw, 3rem)', color: 'var(--color-text-secondary)', lineHeight: '1.6', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>{description}</p>
                 <Link
                     to="/register"
                     style={{
                         marginTop: 'auto',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '1rem',
+                        gap: 'clamp(0.5rem, 2vw, 1rem)',
                         color: 'var(--color-brand-primary)',
                         fontWeight: '800',
-                        fontSize: '1.1rem',
+                        fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
                         textDecoration: 'none',
                         transition: 'all 0.3s'
                     }}

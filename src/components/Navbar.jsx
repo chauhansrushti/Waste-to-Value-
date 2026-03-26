@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Leaf, LogIn, LogOut } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -6,6 +6,15 @@ import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <nav
@@ -18,7 +27,7 @@ const Navbar = () => {
         backdropFilter: 'blur(16px)',
         backgroundColor: 'rgba(4, 30, 21, 0.85)',
         borderBottom: '1px solid rgba(0, 255, 157, 0.1)',
-        padding: '1rem 2rem'
+        padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem)'
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -41,7 +50,7 @@ const Navbar = () => {
             </div>
           </motion.div>
           <span style={{
-            fontSize: '1.5rem',
+            fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
             fontWeight: '800',
             color: '#FFFFFF',
             letterSpacing: '-1px'
@@ -50,9 +59,8 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Nav - conditionally rendered based on role */}
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          {/* Only show public or role-specific links */}
+        {/* Desktop Nav */}
+        <div className="nav-desktop">
           {isAuthenticated && user?.role === 'seller' && (
             <Link to="/seller" style={{ color: 'var(--color-text-secondary)', fontWeight: '500' }}>Seller</Link>
           )}
@@ -64,24 +72,63 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Auth Buttons */}
+        {/* Auth Buttons - Desktop */}
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           {isAuthenticated ? (
             <>
-              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Hi, {user.name}</span>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', display: 'none' }} className="md:show">Hi, {user.name}</span>
               <button onClick={logout} className="btn btn-secondary" style={{ padding: '0.5rem 1rem', display: 'flex', gap: '0.5rem' }}>
-                Logout <LogOut size={16} />
+                <LogOut size={16} /> <span style={{ display: 'none' }} className="sm:hidden">Logout</span>
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn btn-secondary" style={{ padding: '0.5rem 1.25rem' }}>Login</Link>
-              <Link to="/register" className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                Get Started <LogIn size={16} />
+              <Link to="/login" className="btn btn-secondary" style={{ padding: '0.5rem 1.25rem', display: 'none' }} className="sm:hidden">Login</Link>
+              <Link to="/register" className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 'auto' }}>
+                <LogIn size={16} /> <span style={{ display: 'none' }} className="sm:hidden">Get Started</span>
               </Link>
             </>
           )}
         </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={toggleMobileMenu}
+          className={`nav-menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
+          style={{}}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={`nav-mobile ${mobileMenuOpen ? 'active' : ''}`} style={{ position: 'relative', top: 0 }}>
+        {isAuthenticated && user?.role === 'seller' && (
+          <Link to="/seller" onClick={closeMobileMenu}>Seller Dashboard</Link>
+        )}
+        {isAuthenticated && user?.role === 'buyer' && (
+          <Link to="/buyer" onClick={closeMobileMenu}>Buyer Dashboard</Link>
+        )}
+        {isAuthenticated && user?.role === 'recycler' && (
+          <Link to="/recycler" onClick={closeMobileMenu}>Recycler Dashboard</Link>
+        )}
+        {isAuthenticated ? (
+          <>
+            <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', padding: '0.75rem 1rem' }}>Hi, {user.name}</span>
+            <button onClick={() => { logout(); closeMobileMenu(); }} className="btn btn-secondary" style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
+              Logout <LogOut size={16} />
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="btn btn-secondary" onClick={closeMobileMenu} style={{ width: 'auto' }}>Login</Link>
+            <Link to="/register" className="btn btn-primary" onClick={closeMobileMenu} style={{ width: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+              Get Started <LogIn size={16} />
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
