@@ -22,4 +22,4 @@ and transaction records
 ● Includes SMS/WhatsApp notifications for low-connectivity users 
 in Tier 3 areas
 
- see the project - https://waste-to-value.vercel.app/
+ see the project - https://waste-to-value.vercel.app
